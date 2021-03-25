@@ -1,0 +1,150 @@
+$color-main:#3F51B5;
+$color-accent:#E81919;
+$color-text: #333333;
+$layout-width-inner: 1200px;
+
+$breakpoints: (
+    "sp": "(max-width: 767px)", 
+    "tab": "(min-width: 768px) and (max-width: #{$layout-width-inner})",
+    "pc": "(min-width: #{$layout-width-inner})",
+  );
+  
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+    }
+  }
+
+  *,
+  *::before,
+  *::after{
+      box-sizing: border-box;
+  }
+
+  html,
+  body{
+      padding: 0;
+      margin: 0;
+  }
+  body{
+       font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+       font-size: 16px;
+       line-height: 1.6;
+       background:  #fff;
+       color: $color-text;
+    };
+img{
+        max-width: 100%;
+        height:auto;
+    }
+
+ul,
+ ol{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+h1,
+h2,
+n3,
+n4,
+h5,
+h6{
+    margin:0;
+    padding:0;
+}
+
+a{
+    color:inherit;
+}
+
+.inner{
+    width:$layout-width-inner ;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.header{
+    background-color:$color-main;
+    height: 100px;
+}
+.header_inner{
+    display:flex;
+    align-items: center;
+    height: inherit;
+
+}
+.header_logo{
+    width: 205px;
+    img{
+        display: block;
+    }
+}
+.header_nav{
+    display:flex;
+    align-items: center;
+    margin-left: auto;
+    li{
+        &:not(:first-child){
+        margin-left: 40px;
+        }
+        a{
+            color:#fff;
+            text-decoration: none;
+            position: relative;
+              &.is-active{
+              &::after{
+                  content:"";
+                  position: absolute;
+                  bottom: -8px;
+                  left: 0;
+                  width: 100%;
+                  height:2px;
+                  background:$color-accent;
+                }
+           }
+       }
+    }
+}
+//main-visual
+.main-visual{
+    height: 600px;
+    width: 100%;
+    background: url(../img/mainvisual.png) no-repeat center center/cover;
+    position: relative;
+}
+.main-visual_content{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align: center;
+
+}
+.main-visual_title{
+    font-size:64px;
+    font-weight: 700;
+}
+.main-visual_lead{
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 24px;
+
+}
+.main-visual_button{
+    margin-top: 36px;
+    a{
+        display: inline-block;
+        width: 390px;
+        height: 83px;
+        line-height: 83px;
+        font-size: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        text-align: center;
+        color:#fff;
+        background:$color-main;
+        border-radius: 12px;
+        box-shadow: 0 3px 6px rgba(#000, 0.16);
+    }
+}
